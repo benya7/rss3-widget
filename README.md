@@ -1,1 +1,1 @@
-# rss3-widget
+# RSS3 Widget
