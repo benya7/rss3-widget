@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Demo page of the widget</title>
+</head>
+
+<body>
+    <h1>Help Widget Demo</h1>
+    <h2>The shown widget is for demonstration purpose only</h2>
+
+    <p>
+        The following snippet is embedded on this page and allows to render a widget shown on the right bottom corner:
+    </p>
+    <code>
+        <pre>
+&lt;script&gt;
+    (function (w, d, s, o, f, js, fjs) {
+        w[o] = w[o] || function () { (w[o].q = w[o].q || []).push(arguments) };
+        js = d.createElement(s), fjs = d.getElementsByTagName(s)[0];
+        js.id = o; js.src = f; js.async = 1; fjs.parentNode.insertBefore(js, fjs);
+    }(window, document, 'script', '_hw', './widget.js'));
+    _hw('init');
+&lt;/script&gt;
+        </pre>
+    </code>
+
+    <p>
+        There is also an additional snippet on the right top corner, that demonstrates ability to embed multiple widgets
+        with different configurations and keep their instances separate:
+    </p>
+    <code>
+        <pre>
+&lt;script&gt;
+    (function (w, d, s, o, f, js, fjs) {
+        w[o] = w[o] || function () { (w[o].q = w[o].q || []).push(arguments) };
+        js = d.createElement(s), fjs = d.getElementsByTagName(s)[0];
+        js.id = o; js.src = f; js.async = 1; fjs.parentNode.insertBefore(js, fjs);
+    }(window, document, 'script', 'aw1', './widget.js'));
+    aw1('init', { minimized: true, disableDarkMode: true });
+&lt;/script&gt;
+&lt;style&gt;
+    #widget-aw1 .main-root-3PoTs {
+        right: auto;
+        left: 10px
+    }
+&lt;/style&gt;
+        </pre>
+    </code>
+
+    <p>
+        To fire an event that handled inside widget, click <a href="javascript:;" onclick="_hw('event', 'open')">here to open</a>,
+        and here <a href="javascript:;" onclick="_hw('event', 'close')">to close it</a>.
+    </p>
+
+
+    <script>
+        (function (w, d, s, o, f, js, fjs) {
+            w[o] = w[o] || function () { (w[o].q = w[o].q || []).push(arguments) };
+            js = d.createElement(s), fjs = d.getElementsByTagName(s)[0];
+            js.id = o; js.src = f; js.async = 1; fjs.parentNode.insertBefore(js, fjs);
+        }(window, document, 'script', '_hw', './widget.js'));
+        _hw('init', { debug: true, disableDarkMode: false, accounts: ["0x3e8feb251f6487abef6fdd782657c94bdb1bd688"] });
+    </script>
+
+</body>
+
+</html>
