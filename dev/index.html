@@ -1,69 +1,155 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Demo page of the widget</title>
-</head>
+  </head>
 
-<body>
-    <h1>Help Widget Demo</h1>
-    <h2>The shown widget is for demonstration purpose only</h2>
-
+  <body>
+    <h1 id="rss3-widget">RSS3 Widget</h1>
+    <p>Integrate an RSS3 widget in your web application</p>
+    <h2 id="what-is-rss3">What is RSS3?</h2>
     <p>
-        The following snippet is embedded on this page and allows to render a widget shown on the right bottom corner:
+      RSS3 is an information dissemination protocol for Web3 with the core
+      elements of feed and search.
+      <a href="https://blog.rss3.io">Learn more.</a>
     </p>
-    <code>
-        <pre>
-&lt;script&gt;
-    (function (w, d, s, o, f, js, fjs) {
-        w[o] = w[o] || function () { (w[o].q = w[o].q || []).push(arguments) };
-        js = d.createElement(s), fjs = d.getElementsByTagName(s)[0];
-        js.id = o; js.src = f; js.async = 1; fjs.parentNode.insertBefore(js, fjs);
-    }(window, document, 'script', '_hw', './widget.js'));
-    _hw('init');
-&lt;/script&gt;
-        </pre>
-    </code>
+    <h2 id="usage">Usage</h2>
+    <h3 id="dev">Dev</h3>
+    <!-- HTML generated using hilite.me -->
+    <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">git clone https://github.com/en0c-026/rss3-widget
+<span style="color: #007722">cd </span>rss3-widget
+npm start
+</pre></div>
 
-    <p>
-        There is also an additional snippet on the right top corner, that demonstrates ability to embed multiple widgets
-        with different configurations and keep their instances separate:
-    </p>
-    <code>
-        <pre>
-&lt;script&gt;
-    (function (w, d, s, o, f, js, fjs) {
-        w[o] = w[o] || function () { (w[o].q = w[o].q || []).push(arguments) };
-        js = d.createElement(s), fjs = d.getElementsByTagName(s)[0];
-        js.id = o; js.src = f; js.async = 1; fjs.parentNode.insertBefore(js, fjs);
-    }(window, document, 'script', 'aw1', './widget.js'));
-    aw1('init', { minimized: true, disableDarkMode: true });
-&lt;/script&gt;
-&lt;style&gt;
-    #widget-aw1 .main-root-3PoTs {
-        right: auto;
-        left: 10px
+
+    <h3 id="build">Build</h3>
+    <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">npm build
+</pre></div>
+    <h3 id="insert-the-widget-in-your-web-app">
+      Insert the widget in your web app
+    </h3>
+    <p>Paste the following code snippet into the html index.</p>
+    <!-- HTML generated using hilite.me -->
+    <div
+      style="
+        background: #f8f8f8;
+        overflow: auto;
+        width: auto;
+        border: solid gray;
+        border-width: 0.1em 0.1em 0.1em 0.8em;
+        padding: 0.2em 0.6em;
+      "
+    >
+      <pre
+        style="margin: 0; line-height: 125%"
+      ><span style="color: #008000; font-weight: bold">&lt;script&gt;</span>
+  (<span style="color: #008000; font-weight: bold">function</span> (w, d, s, o, f, js, fjs) {
+      w[o] <span style="color: #666666">=</span> w[o] <span style="color: #666666">||</span> <span style="color: #008000; font-weight: bold">function</span> () { (w[o].q <span style="color: #666666">=</span> w[o].q <span style="color: #666666">||</span> []).push(arguments) };
+      js <span style="color: #666666">=</span> d.createElement(s), fjs <span style="color: #666666">=</span> d.getElementsByTagName(s)[<span style="color: #666666">0</span>];
+      js.id <span style="color: #666666">=</span> o; js.src <span style="color: #666666">=</span> f; js.async <span style="color: #666666">=</span> <span style="color: #666666">1</span>; fjs.parentNode.insertBefore(js, fjs);
+  }(<span style="color: #008000">window</span>, <span style="color: #008000">document</span>, <span style="color: #BA2121">&#39;script&#39;</span>, <span style="color: #BA2121">&#39;_hw&#39;</span>, <span style="color: #BA2121">&#39;./widget.js&#39;</span>));
+  _hw(
+    <span style="color: #BA2121">&#39;init&#39;</span>,
+    <span style="color: #408080; font-style: italic">// Options object, here you must setup the feed options</span>
+    { 
+      accounts<span style="color: #666666">:</span> [<span style="color: #BA2121">&quot;vitalik.eth&quot;</span>],
+      networks<span style="color: #666666">:</span> [<span style="color: #BA2121">&quot;ethereum&quot;</span>]
     }
-&lt;/style&gt;
-        </pre>
-    </code>
+    );
+<span style="color: #008000; font-weight: bold">&lt;/script&gt;</span>
+</pre>
+    </div>
 
-    <p>
-        To fire an event that handled inside widget, click <a href="javascript:;" onclick="_hw('event', 'open')">here to open</a>,
-        and here <a href="javascript:;" onclick="_hw('event', 'close')">to close it</a>.
-    </p>
-
+    <h2 id="options">Options</h2>
+    <style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-lboi{border-color:inherit;text-align:left;vertical-align:middle}
+.tg .tg-g7sd{border-color:inherit;font-weight:bold;text-align:left;vertical-align:middle}
+</style>
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-g7sd">option</th>
+    <th class="tg-g7sd">type</th>
+    <th class="tg-g7sd">description</th>
+    <th class="tg-g7sd">default</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-lboi">disableDarkMode</td>
+    <td class="tg-lboi">boolean</td>
+    <td class="tg-lboi">Turn off dark mode</td>
+    <td class="tg-lboi">false</td>
+  </tr>
+  <tr>
+    <td class="tg-lboi">debug</td>
+    <td class="tg-lboi">boolean</td>
+    <td class="tg-lboi">Enable debug mode for API calls</td>
+    <td class="tg-lboi">false</td>
+  </tr>
+  <tr>
+    <td class="tg-lboi">serviceBaseUrl</td>
+    <td class="tg-lboi">string</td>
+    <td class="tg-lboi">Base url for RSS3 API</td>
+    <td class="tg-lboi">https://pregod.rss3.dev/v1</td>
+  </tr>
+  <tr>
+    <td class="tg-lboi">accounts</td>
+    <td class="tg-lboi">string[]</td>
+    <td class="tg-lboi">List of addresses or ENS handles to obtain the feeding data</td>
+    <td class="tg-lboi"></td>
+  </tr>
+  <tr>
+    <td class="tg-lboi">limit</td>
+    <td class="tg-lboi">number</td>
+    <td class="tg-lboi">Limit number of items to get per call</td>
+    <td class="tg-lboi">10</td>
+  </tr>
+  <tr>
+    <td class="tg-lboi">networks</td>
+    <td class="tg-lboi">string[]</td>
+    <td class="tg-lboi">List of platforms to filter the data. Accepted values: Ethereum, BSC, Polygon, zkSync, xDai, Arweave, Crossbell.</td>
+    <td class="tg-lboi"></td>
+  </tr>
+  <tr>
+    <td class="tg-lboi">tags</td>
+    <td class="tg-lboi">string[]</td>
+    <td class="tg-lboi">List of tags to filter the data. Accepted values: transaction, exchange, collectible, social, donation, governance.</td>
+    <td class="tg-lboi"></td>
+  </tr>
+  <tr>
+    <td class="tg-lboi">platforms</td>
+    <td class="tg-lboi">string[]</td>
+    <td class="tg-lboi">List of platforms to filter the data. Accepted values: Farcaster, EIP-1577, xLog, Mirror, Lens, POAP, Gitcoin, Snapshot, DEX, CEX.</td>
+    <td class="tg-lboi"></td>
+  </tr>
+</tbody>
+</table>
 
     <script>
-        (function (w, d, s, o, f, js, fjs) {
-            w[o] = w[o] || function () { (w[o].q = w[o].q || []).push(arguments) };
-            js = d.createElement(s), fjs = d.getElementsByTagName(s)[0];
-            js.id = o; js.src = f; js.async = 1; fjs.parentNode.insertBefore(js, fjs);
-        }(window, document, 'script', '_hw', './widget.js'));
-        _hw('init', { debug: true, disableDarkMode: false, accounts: ["0x3e8feb251f6487abef6fdd782657c94bdb1bd688"] });
+      (function (w, d, s, o, f, js, fjs) {
+        w[o] =
+          w[o] ||
+          function () {
+            (w[o].q = w[o].q || []).push(arguments);
+          };
+        (js = d.createElement(s)), (fjs = d.getElementsByTagName(s)[0]);
+        js.id = o;
+        js.src = f;
+        js.async = 1;
+        fjs.parentNode.insertBefore(js, fjs);
+      })(window, document, "script", "_hw", "./widget.js");
+      _hw("init", {
+        debug: true,
+        disableDarkMode: false,
+        accounts: ["0x3e8feb251f6487abef6fdd782657c94bdb1bd688"],
+      });
     </script>
-
-</body>
-
+  </body>
 </html>
