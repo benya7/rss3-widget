@@ -3,9 +3,12 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>RSS3 Widget</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
@@ -20,15 +23,41 @@
     <h2 id="usage">Usage</h2>
     <h3 id="dev">Dev</h3>
     <!-- HTML generated using hilite.me -->
-    <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">git clone https://github.com/en0c-026/rss3-widget
+    <!-- HTML generated using hilite.me -->
+    <div
+      style="
+        background: #ffffff;
+        overflow: auto;
+        width: auto;
+        border: solid gray;
+        border-width: 0.1em 0.1em 0.1em 0.8em;
+        padding: 0.2em 0.6em;
+      "
+    >
+      <pre
+        style="margin: 0; line-height: 125%"
+      >git clone https://github.com/en0c-026/rss3-widget
 <span style="color: #007722">cd </span>rss3-widget
 npm start
-</pre></div>
-
+</pre>
+    </div>
 
     <h3 id="build">Build</h3>
-    <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">npm build
-</pre></div>
+    <div
+      style="
+        background: #ffffff;
+        overflow: auto;
+        width: auto;
+        border: solid gray;
+        border-width: 0.1em 0.1em 0.1em 0.8em;
+        padding: 0.2em 0.6em;
+      "
+    >
+      <pre style="margin: 0; line-height: 125%">
+npm build
+</pre
+      >
+    </div>
     <h3 id="insert-the-widget-in-your-web-app">
       Insert the widget in your web app
     </h3>
@@ -66,76 +95,116 @@ npm start
 
     <h2 id="options">Options</h2>
     <style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-lboi{border-color:inherit;text-align:left;vertical-align:middle}
-.tg .tg-g7sd{border-color:inherit;font-weight:bold;text-align:left;vertical-align:middle}
-</style>
-<table class="tg">
-<thead>
-  <tr>
-    <th class="tg-g7sd">option</th>
-    <th class="tg-g7sd">type</th>
-    <th class="tg-g7sd">description</th>
-    <th class="tg-g7sd">default</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td class="tg-lboi">disableDarkMode</td>
-    <td class="tg-lboi">boolean</td>
-    <td class="tg-lboi">Turn off dark mode</td>
-    <td class="tg-lboi">false</td>
-  </tr>
-  <tr>
-    <td class="tg-lboi">debug</td>
-    <td class="tg-lboi">boolean</td>
-    <td class="tg-lboi">Enable debug mode for API calls</td>
-    <td class="tg-lboi">false</td>
-  </tr>
-  <tr>
-    <td class="tg-lboi">serviceBaseUrl</td>
-    <td class="tg-lboi">string</td>
-    <td class="tg-lboi">Base url for RSS3 API</td>
-    <td class="tg-lboi">https://pregod.rss3.dev/v1</td>
-  </tr>
-  <tr>
-    <td class="tg-lboi">accounts</td>
-    <td class="tg-lboi">string[]</td>
-    <td class="tg-lboi">List of addresses or ENS handles to obtain the feeding data</td>
-    <td class="tg-lboi"></td>
-  </tr>
-  <tr>
-    <td class="tg-lboi">limit</td>
-    <td class="tg-lboi">number</td>
-    <td class="tg-lboi">Limit number of items to get per call</td>
-    <td class="tg-lboi">10</td>
-  </tr>
-  <tr>
-    <td class="tg-lboi">networks</td>
-    <td class="tg-lboi">string[]</td>
-    <td class="tg-lboi">List of platforms to filter the data. Accepted values: Ethereum, BSC, Polygon, zkSync, xDai, Arweave, Crossbell.</td>
-    <td class="tg-lboi"></td>
-  </tr>
-  <tr>
-    <td class="tg-lboi">tags</td>
-    <td class="tg-lboi">string[]</td>
-    <td class="tg-lboi">List of tags to filter the data. Accepted values: transaction, exchange, collectible, social, donation, governance.</td>
-    <td class="tg-lboi"></td>
-  </tr>
-  <tr>
-    <td class="tg-lboi">platforms</td>
-    <td class="tg-lboi">string[]</td>
-    <td class="tg-lboi">List of platforms to filter the data. Accepted values: Farcaster, EIP-1577, xLog, Mirror, Lens, POAP, Gitcoin, Snapshot, DEX, CEX.</td>
-    <td class="tg-lboi"></td>
-  </tr>
-</tbody>
-</table>
+      .tg {
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
+      .tg td {
+        border-color: black;
+        border-style: solid;
+        border-width: 1px;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        overflow: hidden;
+        padding: 10px 5px;
+        word-break: normal;
+      }
+      .tg th {
+        border-color: black;
+        border-style: solid;
+        border-width: 1px;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        font-weight: normal;
+        overflow: hidden;
+        padding: 10px 5px;
+        word-break: normal;
+      }
+      .tg .tg-lboi {
+        border-color: inherit;
+        text-align: left;
+        vertical-align: middle;
+      }
+      .tg .tg-g7sd {
+        border-color: inherit;
+        font-weight: bold;
+        text-align: left;
+        vertical-align: middle;
+      }
+    </style>
+    <table class="tg">
+      <thead>
+        <tr>
+          <th class="tg-g7sd">option</th>
+          <th class="tg-g7sd">type</th>
+          <th class="tg-g7sd">description</th>
+          <th class="tg-g7sd">default</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="tg-lboi">disableDarkMode</td>
+          <td class="tg-lboi">boolean</td>
+          <td class="tg-lboi">Turn off dark mode</td>
+          <td class="tg-lboi">false</td>
+        </tr>
+        <tr>
+          <td class="tg-lboi">debug</td>
+          <td class="tg-lboi">boolean</td>
+          <td class="tg-lboi">Enable debug mode for API calls</td>
+          <td class="tg-lboi">false</td>
+        </tr>
+        <tr>
+          <td class="tg-lboi">serviceBaseUrl</td>
+          <td class="tg-lboi">string</td>
+          <td class="tg-lboi">Base url for RSS3 API</td>
+          <td class="tg-lboi">https://pregod.rss3.dev/v1</td>
+        </tr>
+        <tr>
+          <td class="tg-lboi">accounts</td>
+          <td class="tg-lboi">string[]</td>
+          <td class="tg-lboi">
+            List of addresses or ENS handles to obtain the feeding data
+          </td>
+          <td class="tg-lboi"></td>
+        </tr>
+        <tr>
+          <td class="tg-lboi">limit</td>
+          <td class="tg-lboi">number</td>
+          <td class="tg-lboi">Limit number of items to get per call</td>
+          <td class="tg-lboi">10</td>
+        </tr>
+        <tr>
+          <td class="tg-lboi">networks</td>
+          <td class="tg-lboi">string[]</td>
+          <td class="tg-lboi">
+            List of platforms to filter the data. Accepted values: Ethereum,
+            BSC, Polygon, zkSync, xDai, Arweave, Crossbell.
+          </td>
+          <td class="tg-lboi"></td>
+        </tr>
+        <tr>
+          <td class="tg-lboi">tags</td>
+          <td class="tg-lboi">string[]</td>
+          <td class="tg-lboi">
+            List of tags to filter the data. Accepted values: transaction,
+            exchange, collectible, social, donation, governance.
+          </td>
+          <td class="tg-lboi"></td>
+        </tr>
+        <tr>
+          <td class="tg-lboi">platforms</td>
+          <td class="tg-lboi">string[]</td>
+          <td class="tg-lboi">
+            List of platforms to filter the data. Accepted values: Farcaster,
+            EIP-1577, xLog, Mirror, Lens, POAP, Gitcoin, Snapshot, DEX, CEX.
+          </td>
+          <td class="tg-lboi"></td>
+        </tr>
+      </tbody>
+    </table>
 
-  <h2>Demo</h2>
+    <h2>Demo</h2>
 
     <script>
       (function (w, d, s, o, f, js, fjs) {
@@ -152,7 +221,7 @@ npm start
       })(window, document, "script", "_hw", "./widget.js");
       _hw("init", {
         accounts: ["vitalik.eth", "owocki.eth", "satoshi.eth"],
-        networks: ["ethereum", "polygon", "zkSync"]
+        networks: ["ethereum", "polygon", "zkSync"],
       });
     </script>
   </body>
