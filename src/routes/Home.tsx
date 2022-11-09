@@ -103,7 +103,7 @@ const Home = () => {
               <p>{note.network}</p>
               <p>{parseDate(note.timestamp)}</p>
             </div>
-            <ActionItem action={note.actions[0]} ensList={ensList} />
+            <ActionItem note={note} ensList={ensList} />
           </div>
         ))
       }
@@ -115,43 +115,43 @@ const Home = () => {
 };
 
 
-const ActionItem = ({ action, ensList }: { action: Action; ensList: any }) => {
-  if (action.tag == "transaction" && action.type == "transfer") {
+const ActionItem = ({ note, ensList }: { note: Note; ensList: any }) => {
+  if (note.tag == "transaction" && note.type == "transfer") {
     return (
       <div>
         <div className={style.action}>
-          <p className={style.bold}>{formatAccount(action.address_from, ensList)}</p>
-          <p className={style.fs90}>{getTextByTag(action.tag, action.type)}</p>
-          <p className={style.bold}>{formatAccount(action.address_to, ensList)}</p>
+          <p className={style.bold}>{formatAccount(note.address_from, ensList)}</p>
+          <p className={style.fs90}>{getTextByTag(note.tag, note.type)}</p>
+          <p className={style.bold}>{formatAccount(note.address_to, ensList)}</p>
         </div>
         <div className={style.metadata}>
-          <img src={action.metadata.image} alt="" />
-          <p>{action.metadata.value_display?.substring(0, 6)}</p>
-          <p className={style.bold}>{action.metadata.symbol}</p>
+          <img src={note.actions[0].metadata.image} alt="" />
+          <p>{note.actions[0].metadata.value_display?.substring(0, 6)}</p>
+          <p className={style.bold}>{note.actions[0].metadata.symbol}</p>
         </div>
       </div>
     )
-  } else if (action.tag == "exchange" && (action.type == "swap" || action.type == "liquidity" || action.type == "withdraw")) {
+  } else if (note.tag == "exchange" && (note.type == "swap" || note.type == "liquidity" || note.type == "withdraw")) {
     return (
       <div>
         <div className={style.action}>
-          <p className={style.bold}>{formatAccount(action.address_from, ensList)}</p>
-          <p className={style.fs90}>{getTextByTag(action.tag, action.type)}</p>
-          <p className={style.bold}>{action.metadata.protocol}</p>
+          <p className={style.bold}>{formatAccount(note.address_from, ensList)}</p>
+          <p className={style.fs90}>{getTextByTag(note.tag, note.type)}</p>
+          <p className={style.bold}>{note.actions[0].metadata.protocol}</p>
         </div>
-        {action.type == "swap" ?
+        {note.type == "swap" ?
           <div className={style.metadata}>
-            <img src={action.metadata.from?.image} alt="" />
-            <img src={action.metadata.to?.image} alt="" />
-            <p>{action.metadata.from?.value_display?.substring(0, 6)}</p>
-            <p className={style.bold}>{action.metadata.from?.symbol}</p>
+            <img src={note.actions[0].metadata.from?.image} alt="" />
+            <img src={note.actions[0].metadata.to?.image} alt="" />
+            <p>{note.actions[0].metadata.from?.value_display?.substring(0, 6)}</p>
+            <p className={style.bold}>{note.actions[0].metadata.from?.symbol}</p>
             <p className={style.fs90}>for</p>
-            <p>{action.metadata.to?.value_display?.substring(0, 6)}</p>
-            <p className={style.bold}>{action.metadata.to?.symbol}</p>
+            <p>{note.actions[0].metadata.to?.value_display?.substring(0, 6)}</p>
+            <p className={style.bold}>{note.actions[0].metadata.to?.symbol}</p>
           </div>
           :
           <div>
-            {action.metadata.tokens?.map((token: Token) => (
+            {note.actions[0].metadata.tokens?.map((token: Token) => (
               <div className={style.metadata}>
                 <img src={token.image} alt="" />
                 <p>{token.value_display}</p>
@@ -163,103 +163,103 @@ const ActionItem = ({ action, ensList }: { action: Action; ensList: any }) => {
         }
       </div>
     )
-  } else if (action.tag == "social") {
+  } else if (note.tag == "social") {
     return (
       <div>
         <div className={style.action}>
-          <p className={style.bold}>{formatAccount(action.address_from, ensList)}</p>
-          <p className={style.fs90}>{getTextByTag(action.tag, action.type)}</p>
-          <p className={style.bold}>{action.platform}</p>
+          <p className={style.bold}>{formatAccount(note.address_from, ensList)}</p>
+          <p className={style.fs90}>{getTextByTag(note.tag, note.type)}</p>
+          <p className={style.bold}>{note.actions[0].platform}</p>
         </div>
 
         <a href={
-          action.type == "post" ? (
-            action.related_urls.length > 1 ? action.related_urls[1] : action.related_urls[0]
-          ) : action.metadata.target?.target_url
+          note.type == "post" ? (
+            note.actions[0].related_urls.length > 1 ? note.actions[0].related_urls[1] : note.actions[0].related_urls[0]
+          ) : note.actions[0].metadata.target?.target_url
         } target="_blank">
-          <p className={style.fs90}>{action.metadata.title ? action.metadata.title : action.metadata.body}</p>
+          <p className={style.fs90}>{note.actions[0].metadata.title ? note.actions[0].metadata.title : note.actions[0].metadata.body}</p>
           <div className={style.metadata}>
             <div className={style.target}>
 
               {
-                action.metadata.target?.media &&
-                <MediaItem media={action.metadata.target?.media[0]} />
+                note.actions[0].metadata.target?.media &&
+                <MediaItem media={note.actions[0].metadata.target?.media[0]} />
               }
-              <p className={style.fs75}>{action.metadata.target?.body}</p>
+              <p className={style.fs75}>{note.actions[0].metadata.target?.body}</p>
             </div>
           </div>
         </a>
       </div>
     )
-  } else if (action.tag == "donation") {
+  } else if (note.tag == "donation") {
     return (
       <div>
         <div className={style.action}>
-          <p className={style.bold}>{formatAccount(action.address_from, ensList)}</p>
-          <p className={style.fs90}>{getTextByTag(action.tag, action.type)}</p>
-          <p className={style.bold}>{action.metadata.token?.value_display?.substring(0, 5)}</p>
-          <p className={style.bold}>{action.metadata.token?.symbol}</p>
+          <p className={style.bold}>{formatAccount(note.address_from, ensList)}</p>
+          <p className={style.fs90}>{getTextByTag(note.tag, note.type)}</p>
+          <p className={style.bold}>{note.actions[0].metadata.token?.value_display?.substring(0, 5)}</p>
+          <p className={style.bold}>{note.actions[0].metadata.token?.symbol}</p>
         </div>
-        <a href={action.related_urls[1]} target="_blank">
+        <a href={note.actions[0].related_urls[1]} target="_blank">
           <div className={style.metadata}>
             <div className={style.target}>
-              <img src={action.metadata.logo} alt="" />
+              <img src={note.actions[0].metadata.logo} alt="" />
               <div>
-                <p className={style.fs90}>{action.metadata.title}</p>
-                <p className={style.fs75}>{action.metadata.description}</p>
+                <p className={style.fs90}>{note.actions[0].metadata.title}</p>
+                <p className={style.fs75}>{note.actions[0].metadata.description}</p>
               </div>
             </div>
           </div>
         </a>
       </div>
     )
-  } else if (action.tag == "collectible" && (action.type == "trade" || action.type == "mint")) {
+  } else if (note.tag == "collectible" && (note.type == "trade" || note.type == "mint" || note.type == "transfer")) {
     return (
       <div>
         <div className={style.action}>
-          <p className={style.bold}>{formatAccount(action.type != "mint" ? action.address_from : action.address_to, ensList)}</p>
-          <p className={style.fs90}>{getTextByTag(action.tag, action.type)}</p>
-          {action.type != "mint" && <p className={style.bold}>{formatAccount(action.address_to, ensList)}</p>}
+          <p className={style.bold}>{formatAccount(note.type != "mint" ? note.address_from : note.address_to, ensList)}</p>
+          <p className={style.fs90}>{getTextByTag(note.tag, note.type)}</p>
+          {note.type != "mint" && <p className={style.bold}>{formatAccount(note.address_to, ensList)}</p>}
         </div>
-        {action.type == "trade" &&
+        {note.type == "trade" &&
           <div className={style.action}>
             <p className={style.fs90}>for</p>
-            <p>{action.metadata.cost?.value_display}</p>
-            <p className={style.bold}>{action.metadata.cost?.symbol}</p>
+            <p>{note.actions[0].metadata.cost?.value_display}</p>
+            <p className={style.bold}>{note.actions[0].metadata.cost?.symbol}</p>
           </div>
         }
-        <a href={action.related_urls[1]} target="_blank">
+        <a href={note.actions[0].related_urls[1]} target="_blank">
           <div className={style.metadata}>
             <div className={style.target}>
               <img src={
-                action.metadata.image?.startsWith("ipfs://") ?
-                  `https://ipfs.io/ipfs/${action.metadata.image.split("//")[1]}` :
-                  action.metadata.image
+                note.actions[0].metadata.image?.startsWith("ipfs://") ?
+                  `https://ipfs.io/ipfs/${note.actions[0].metadata.image.split("//")[1]}` :
+                  note.actions[0].metadata.image
               } alt="" />
               <div>
-                <p className={style.fs75}>{action.metadata.collection}</p>
-                <p className={clsx([style.fs90, style.bold])}>{action.metadata.name}</p>
-                <p className={style.fs75}>{action.metadata.description}</p>
+                <p className={style.fs75}>{note.actions[0].metadata.collection}</p>
+                <p className={clsx([style.fs90, style.bold])}>{note.actions[0].metadata.name}</p>
+                <p className={style.fs75}>{note.actions[0].metadata.description}</p>
               </div>
             </div>
           </div>
         </a>
       </div>
     )
-  } else if (action.tag == "governance" && action.type == "vote") {
+  } else if (note.tag == "governance" && note.type == "vote") {
     return (
       <div>
         <div className={style.action}>
-          <p className={style.bold}>{formatAccount(action.address_from, ensList)}</p>
-          <p className={style.fs90}>{getTextByTag(action.tag, action.type)}</p>
-          <p className={style.bold}>{action.metadata.proposal?.organization.name}</p>
+          <p className={style.bold}>{formatAccount(note.address_from, ensList)}</p>
+          <p className={style.fs90}>{getTextByTag(note.tag, note.type)}</p>
+          <p className={style.bold}>{note.actions[0].metadata.proposal?.organization.name}</p>
         </div>
-        <a href={action.related_urls[0]} target="_blank">
+        <a href={note.actions[0].related_urls[0]} target="_blank">
           <div className={style.metadata}>
             <div className={style.target}>
               <div>
-                <p className={clsx([style.fs90, style.bold])}>{action.metadata.proposal?.title}</p>
-                <p className={style.fs75}>{action.metadata.proposal?.body}</p>
+                <p className={clsx([style.fs90, style.bold])}>{note.actions[0].metadata.proposal?.title}</p>
+                <p className={style.fs75}>{note.actions[0].metadata.proposal?.body}</p>
               </div>
             </div>
           </div>
