@@ -12,8 +12,9 @@ export interface AppConfigurations {
   debug: boolean;
   serviceBaseUrl: string;
   accounts: string[];
+  networks: string[];
   tags: string[];
-  types: string[];
+  platforms: string[];
   limit: number;
   styles: {
     classNameContainer?: string;

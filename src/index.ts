@@ -10,9 +10,11 @@ import { Configurations } from './models';
 const defaultConfig: Configurations = {
   debug: false,
   serviceBaseUrl: "https://pregod.rss3.dev/v1",
-  darkMode: false,
+  disableDarkMode: false,
   accounts: [],
+  networks: [],
   tags: [],
+  platforms: [],
   limit: 10,
   styles: {},
 };

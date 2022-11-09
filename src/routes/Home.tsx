@@ -33,9 +33,10 @@ const Home = () => {
         await service.getNotesByInstance(
           config.accounts[0],
           {
+            network: config.networks,
             tag: config.tags,
-            type: config.types,
             limit: config.limit,
+            platform: config.platforms,
             cursor: cursor
           })
       setNotes((prev) => { return [...prev, ...result] })
@@ -50,9 +51,10 @@ const Home = () => {
       const { result, cursor: nextCursor, total } = 
       await service.getNotesByList({ 
         address: config.accounts, 
+        network: config.networks,
         tag: config.tags, 
-        type: config.types, 
-        limit: config.limit, 
+        limit: config.limit,
+        platform: config.platforms, 
         cursor: cursor 
       })
       setNotes((prev) => { return [...prev, ...result] })
