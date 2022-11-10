@@ -204,7 +204,7 @@ const ActionItem = ({ note, ensList }: { note: Note; ensList: any }) => {
               {
                 note.actions[0].metadata.target?.media &&
                 note.actions[0].metadata.target?.media[0].mime_type.startsWith('image') &&
-                <img src={note.actions[0].metadata.target?.media[0].address} alt="" />
+                <img src={note.actions[0].metadata.target?.media[0].address}/>
               }
               <p className={style.fs75}>{note.actions[0].metadata.target?.body}</p>
             </div>
