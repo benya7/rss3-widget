@@ -1,5 +1,5 @@
 {
-  "name": "help-widget",
+  "name": "rss3-widget",
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "build-release": "webpack --config webpack.config.js --env.prod --display-modules",
@@ -7,7 +7,7 @@
     "lint": "tslint --project tsconfig.json",
     "test": "jest"
   },
-  "author": "Jenya Y.",
+  "author": "en0c-026",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.8.3",
