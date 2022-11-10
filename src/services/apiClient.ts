@@ -17,18 +17,18 @@ interface ApiClientOptions {
 
 interface ApiRequest<TRequest = any, TParams = any> {
   readonly url: string;
-  readonly method?: "GET" | "DELETE" | "POST" | "PUT";
+  readonly method?: 'GET' | 'DELETE' | 'POST' | 'PUT';
   readonly requestData?: TRequest;
   readonly params?: any;
 }
 
 export class ApiClient implements WidgetApi {
   private readonly client: AxiosInstance;
-  source: CancelTokenSource;
+  private source: CancelTokenSource;
 
   constructor(options: ApiClientOptions) {
     if (!options?.baseUrl) {
-      throw new Error("baseUrl is required");
+      throw new Error('baseUrl is required');
     }
     this.source = axios.CancelToken.source();
     this.client = axios.create({
@@ -52,16 +52,14 @@ export class ApiClient implements WidgetApi {
     }
   }
 
-  //public getFaq = async () => await this.callApi<FaqModel[]>({ url: `/faq` });
-
   public getProfileByInstance = async (
     addressOrEns: string,
     params?: ProfileParams
   ) =>
     await this.callApi<any>({
       url: `/profiles/${addressOrEns}`,
-      method: "GET",
-      params: params,
+      method: 'GET',
+      params,
     });
 
   public getNotesByInstance = async (
@@ -70,21 +68,21 @@ export class ApiClient implements WidgetApi {
   ) =>
     await this.callApi<NotesResponse>({
       url: `/notes/${addressOrEns}`,
-      method: "GET",
-      params: params,
+      method: 'GET',
+      params,
     });
 
   public getProfileByList = async (params: ListParams) =>
     await this.callApi<any>({
       url: `/profiles`,
-      method: "POST",
+      method: 'POST',
       requestData: params,
     });
 
   public getNotesByList = async (params: ListParams & NotesParams) =>
-    await this.callApi<any>({
+    await this.callApi<NotesResponse>({
       url: `/notes`,
-      method: "POST",
+      method: 'POST',
       requestData: params,
     });
   /**
@@ -103,7 +101,7 @@ export class ApiClient implements WidgetApi {
           params: request.params,
           data: request.requestData,
           paramsSerializer: (params) => {
-            return qs.stringify(params, { arrayFormat: "repeat" });
+            return qs.stringify(params, { arrayFormat: 'repeat' });
           },
         })
         .then((response) =>
@@ -117,14 +115,14 @@ export class ApiClient implements WidgetApi {
 
   private useDebugLogs() {
     this.client.interceptors.request.use((config) => {
-      console.info("Calling API", config.url, config.params);
+      console.info('Calling API', config.url, config.params);
       return config;
     });
 
     this.client.interceptors.response.use(
       (response) => {
         console.info(
-          "Got response from API",
+          'Got response from API',
           response.config.url,
           response.data
         );
@@ -132,7 +130,7 @@ export class ApiClient implements WidgetApi {
       },
       (error: AxiosError) => {
         console.info(
-          "There was an error calling API",
+          'There was an error calling API',
           error.request?.url,
           error.response?.status,
           error.message
@@ -152,7 +150,7 @@ export class ApiClient implements WidgetApi {
         config.headers.Authorization = `Bearer ${token}`;
       } else if (debug) {
         console.log(
-          "No token returned by factory, skipping Authorization header"
+          'No token returned by factory, skipping Authorization header'
         );
       }
 

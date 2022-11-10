@@ -141,9 +141,6 @@ body {
   overflow: auto;
 }
 
-.container.minimized {
-  display: none;
-}
 
 @media screen and (max-width: 600px) {
   .root {

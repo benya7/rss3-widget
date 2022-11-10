@@ -51,12 +51,14 @@ export interface NotesResponse {
   total: number;
 }
 
-
 export interface WidgetApi {
   getProfileByInstance: (addressOrEns: string, params?: ProfileParams) => any;
-  getNotesByInstance: (addressOrEns: string, params?: NotesParams) => Promise<NotesResponse>;
+  getNotesByInstance: (
+    addressOrEns: string,
+    params?: NotesParams
+  ) => Promise<NotesResponse>;
   getProfileByList: (params: ListParams) => any;
-  getNotesByList: (params: ListParams & NotesParams) => any;
+  getNotesByList: (params: ListParams & NotesParams) => Promise<NotesResponse>;
 }
 
 export interface Action {
@@ -79,6 +81,7 @@ export interface Token {
   value?: string;
   value_display?: string;
 }
+
 export interface Swap {
   from?: Token;
   protocol?: string;
@@ -100,7 +103,7 @@ export interface Donation {
 }
 
 export interface Nft {
-  attributes?: { value: string, strait_type: string}[];
+  attributes?: Array<{ value: string, strait_type: string}>;
   collection?: string;
   contract_address?: string;
   description?: string;
@@ -123,7 +126,7 @@ export interface Liquidity {
 export interface Vote {
   choice?: string;
   proposal?: Proposal;
-  type_on_platform?: string[]
+  type_on_platform?: string[];
 }
 
 export interface Proposal {
@@ -135,6 +138,7 @@ export interface Proposal {
   start_at: string;
   title: string;
 }
+
 export interface Comment {
   author?: string[];
   body?: string;
@@ -154,6 +158,7 @@ export interface Media {
   address: string;
   mime_type: string;
 }
+
 export interface Metadata extends Token, Swap, Comment, Donation, Post, Nft, Vote, Liquidity {}
 
 export interface Note {
