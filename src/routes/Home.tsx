@@ -2,11 +2,10 @@ import { h, } from 'preact';
 import { useContext, useState, useEffect } from 'preact/hooks';
 import style from './home.css';
 import { ConfigContext, ServiceContext } from '../AppContext';
-import { Action, Media, Note, Token, WidgetApi } from '../models';
+import { Media, Note, Token, WidgetApi } from '../models';
 import parseDate from '../utils/parseDate';
 import getTextByTag from '../utils/getTextByTag';
 import formatAccount from '../utils/formatAccount';
-import { BsFillPlayBtnFill } from 'react-icons/bs';
 import clsx from 'clsx';
 
 const Home = () => {
@@ -204,7 +203,8 @@ const ActionItem = ({ note, ensList }: { note: Note; ensList: any }) => {
 
               {
                 note.actions[0].metadata.target?.media &&
-                <MediaItem media={note.actions[0].metadata.target?.media[0]} />
+                note.actions[0].metadata.target?.media[0].mime_type.startsWith('image') &&
+                <img src={note.actions[0].metadata.target?.media[0].address} alt="" />
               }
               <p className={style.fs75}>{note.actions[0].metadata.target?.body}</p>
             </div>
@@ -301,16 +301,6 @@ const ActionItem = ({ note, ensList }: { note: Note; ensList: any }) => {
     );
   } else {
     return <div>working..</div>;
-  }
-};
-
-const MediaItem = ({ media }: { media: Media }) => {
-  if (media.mime_type.startsWith('image')) {
-    return (
-      <img src={media.address} alt='' />
-    );
-  } else {
-    return <BsFillPlayBtnFill />;
   }
 };
 
