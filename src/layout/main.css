@@ -22,9 +22,6 @@
     --color-error: #f44336;
   }
 }
-body {
-  font-family: Roboto, sans-serif;
-}
 .reset {
   composes: scope;
   background: var(--color-bg);
@@ -62,7 +59,7 @@ body {
 
 .reset a:hover {
   filter: brightness(var(--hover-brightness));
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 .reset button {
