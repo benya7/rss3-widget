@@ -2,11 +2,12 @@ import { h, } from 'preact';
 import { useContext, useState, useEffect } from 'preact/hooks';
 import style from './home.css';
 import { ConfigContext, ServiceContext } from '../AppContext';
-import { Media, Note, Token, WidgetApi } from '../models';
+import { Note, Token, WidgetApi } from '../models';
 import parseDate from '../utils/parseDate';
 import getTextByTag from '../utils/getTextByTag';
 import formatAccount from '../utils/formatAccount';
 import clsx from 'clsx';
+import formatValue from '../utils/formatValue';
 
 const Home = () => {
   const config = useContext(ConfigContext);
@@ -128,14 +129,17 @@ const ActionItem = ({ note, ensList }: { note: Note; ensList: any }) => {
     return (
       <div>
         <div className={style.action}>
-          <p className={style.bold}>{formatAccount(note.address_from, ensList)}</p>
+          <p className={style.bold}>{formatAccount(note.actions[0].address_from, ensList)}</p>
           <p className={style.fs90}>{getTextByTag(note.tag, note.type)}</p>
-          <p className={style.bold}>{formatAccount(note.address_to, ensList)}</p>
+          <p className={style.bold}>{formatAccount(note.actions[0].address_to, ensList)}</p>
         </div>
         <div className={style.metadata}>
           <img src={note.actions[0].metadata.image} alt='' />
-          <p>{note.actions[0].metadata.value_display?.substring(0, 6)}</p>
+          <p>{formatValue(note.actions[0].metadata.value_display!)}</p>
           <p className={style.bold}>{note.actions[0].metadata.symbol}</p>
+          <a className={style.fs75} href={note.actions[0].related_urls[0]} target='_blank'>
+            View in explorer
+          </a>
         </div>
       </div>
     );
@@ -158,10 +162,10 @@ const ActionItem = ({ note, ensList }: { note: Note; ensList: any }) => {
           <div className={style.metadata}>
             <img src={note.actions[0].metadata.from?.image} alt='' />
             <img src={note.actions[0].metadata.to?.image} alt='' />
-            <p>{note.actions[0].metadata.from?.value_display?.substring(0, 6)}</p>
+            <p>{formatValue(note.actions[0].metadata.from?.value_display!)}</p>
             <p className={style.bold}>{note.actions[0].metadata.from?.symbol}</p>
             <p className={style.fs90}>for</p>
-            <p>{note.actions[0].metadata.to?.value_display?.substring(0, 6)}</p>
+            <p>{formatValue(note.actions[0].metadata.to?.value_display!)}</p>
             <p className={style.bold}>{note.actions[0].metadata.to?.symbol}</p>
           </div>
           :
@@ -176,6 +180,9 @@ const ActionItem = ({ note, ensList }: { note: Note; ensList: any }) => {
             }
           </div>
         }
+        <a className={style.fs75} href={note.actions[0].related_urls[0]} target='_blank'>
+          View in explorer
+        </a>
       </div>
     );
   } else if (note.tag === 'social') {

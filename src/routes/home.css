@@ -73,9 +73,3 @@
 .bold {
   font-weight: 600;
 }
-
-.elipsis {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-}
