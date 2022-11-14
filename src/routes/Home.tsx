@@ -135,8 +135,9 @@ const ActionItem = ({ note, ensList }: { note: Note; ensList: any }) => {
         </div>
         <div className={style.metadata}>
           <img src={note.actions[0].metadata.image} alt='' />
-          <p>{formatValue(note.actions[0].metadata.value_display!)}</p>
-          <p className={style.bold}>{note.actions[0].metadata.symbol}</p>
+          <p>{formatValue(note.actions[0].metadata.value_display!)}{' '}
+          <span className={style.bold}>{note.actions[0].metadata.symbol}</span>
+          </p>
         </div>
         <a className={style.fs75} href={note.actions[0].related_urls[0]} target='_blank'>
           View in explorer
@@ -162,18 +163,22 @@ const ActionItem = ({ note, ensList }: { note: Note; ensList: any }) => {
           <div className={style.metadata}>
             <img src={note.actions[0].metadata.from?.image} alt='' />
             <img src={note.actions[0].metadata.to?.image} alt='' />
-            <p>{formatValue(note.actions[0].metadata.from?.value_display!)}</p>
-            <p className={style.bold}>{note.actions[0].metadata.from?.symbol}</p>
+            <p>{formatValue(note.actions[0].metadata.from?.value_display!)}{" "}
+            <span className={style.bold}>{note.actions[0].metadata.from?.symbol}</span>
+            </p>
             <p className={style.fs90}>for</p>
-            <p>{formatValue(note.actions[0].metadata.to?.value_display!)}</p>
-            <p className={style.bold}>{note.actions[0].metadata.to?.symbol}</p>
+            <p>{formatValue(note.actions[0].metadata.to?.value_display!)}{" "}
+            <span className={style.bold}>{note.actions[0].metadata.to?.symbol}</span>
+            </p>
           </div>
           :
           <div>
             {note.actions[0].metadata.tokens?.map((token: Token) => (
               <div className={style.metadata}>
                 <img src={token.image} alt='' />
-                <p>{token.value_display}</p>
+                <p>{token.value_display}{" "}
+                  <span className={style.bold}>{token.symbol}</span>
+                </p>
                 <p className={style.bold}>{token.symbol}</p>
               </div>
             ))
