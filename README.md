@@ -54,6 +54,6 @@ Paste the following code snippet into the html index.
 | serviceBaseUrl  | string   | Base url for RSS3 API                                                                                                              | https://pregod.rss3.dev/v1 |
 | accounts        | string[] | List of addresses or ENS handles to obtain the feeding data                                                                        |                            |
 | limit           | number   | Limit number of items to get per call                                                                                              | 10                         |
-| networks        | string[] | List of platforms to filter the data. Accepted values: Ethereum, BSC, Polygon, zkSync, xDai, Arweave, Crossbell.                   |                            |
+| networks        | string[] | List of platforms to filter the data. Accepted values: ethereum, ethereum_classic, binance_smart_chain, polygon, zksync, xdai, arweave, arbitrum, optimism, fantom, avalanche.                   |                            |
 | tags            | string[] | List of tags to filter the data. Accepted values: transaction, exchange, collectible, social, donation, governance.                |                            |
-| platforms       | string[] | List of platforms to filter the data. Accepted values: Farcaster, EIP-1577, xLog, Mirror, Lens, POAP, Gitcoin, Snapshot, DEX, CEX. |                            |
+| platforms       | string[] | List of platforms to filter the data. Accepted values: mirror, gitcoin, snapshot, uniswap, binance. |                            |
