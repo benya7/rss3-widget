@@ -9,10 +9,16 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
+    <style>
+      body {
+        font-family: Roboto, sans-serif;
+        padding: 2rem;
+      }
+    </style>
   </head>
 
   <body>
-    <h1 id="rss3-widget">RSS3 Widget</h1>
+    <h1>RSS3 Widget</h1>
     <p>Integrate an RSS3 widget in your web application</p>
     <h2 id="what-is-rss3">What is RSS3?</h2>
     <p>
@@ -92,6 +98,12 @@ npm build
 <span style="color: #008000; font-weight: bold">&lt;/script&gt;</span>
 </pre>
     </div>
+    <p>To render the widget there must be an html element with the id <span style="font-weight: 600;">"rss3-widget"</span>.
+</p>
+<!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008000; font-weight: bold">&lt;div</span> <span style="color: #7D9029">id=</span><span style="color: #BA2121">&quot;rss3-widget&quot;</span><span style="color: #008000; font-weight: bold">&gt;&lt;/div&gt;</span>
+</pre></div>
+
+
 
     <h2 id="options">Options</h2>
     <style type="text/css">
@@ -205,7 +217,8 @@ npm build
     </table>
 
     <h2>Demo</h2>
-
+    <div id="rss3-widget"></div>
+    <p style="font-size: 0.75rem; text-align: center; margin-top: 3rem;">created by <a href="https://github.com/en0c-026" target="_blank" >enoc-026</a></p>
     <script>
       (function (w, d, s, o, f, js, fjs) {
         w[o] =
@@ -220,8 +233,8 @@ npm build
         fjs.parentNode.insertBefore(js, fjs);
       })(window, document, "script", "_hw", "https://djgn4fxgb4icu.cloudfront.net/index.js");
       _hw("init", {
-        accounts: ["vitalik.eth", "owocki.eth"],
-        networks: ["ethereum", "polygon", "zkSync"],
+        accounts: ["vitalik.eth"],
+        networks: ["ethereum"],
       });
     </script>
   </body>

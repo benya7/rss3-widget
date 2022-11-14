@@ -24,7 +24,7 @@ npm start
 npm build
 ```
 
-### Insert the widget in your web app
+## Insert the widget in your web app
 
 Paste the following code snippet into the html index.
 ```html
@@ -45,6 +45,13 @@ Paste the following code snippet into the html index.
 </script>
 
 ```
+
+To render the widget there must be an html element with the id "rss3-widget".
+```html
+<div id="rss3-widget"></div>
+```
+
+
 ## Options
 
 | **option**      | **type** | **description**                                                                                                                    | default                    |
