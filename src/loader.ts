@@ -64,11 +64,8 @@ export default (
                 if (loadedObject.debug) {
                     console.log(`Starting widget [${instanceName}]`, loadedObject);
                 }
-
-                // the actual rendering of the widget
-                const wrappingElement = loadedObject.element ?? win.document.body;
-                targetElement = wrappingElement.appendChild(win.document.createElement('div'));
-                targetElement.setAttribute('id', `widget-${instanceName}`);
+                
+                targetElement = win.document.getElementById("rss3-widget")!;
                 render(targetElement, loadedObject);
 
                 // store indication that widget instance was initialized
