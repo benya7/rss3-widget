@@ -137,10 +137,10 @@ const ActionItem = ({ note, ensList }: { note: Note; ensList: any }) => {
           <img src={note.actions[0].metadata.image} alt='' />
           <p>{formatValue(note.actions[0].metadata.value_display!)}</p>
           <p className={style.bold}>{note.actions[0].metadata.symbol}</p>
-          <a className={style.fs75} href={note.actions[0].related_urls[0]} target='_blank'>
-            View in explorer
-          </a>
         </div>
+        <a className={style.fs75} href={note.actions[0].related_urls[0]} target='_blank'>
+          View in explorer
+        </a>
       </div>
     );
   } else if (
