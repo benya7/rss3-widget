@@ -33,7 +33,7 @@ Paste the following code snippet into the html index.
       w[o] = w[o] || function () { (w[o].q = w[o].q || []).push(arguments) };
       js = d.createElement(s), fjs = d.getElementsByTagName(s)[0];
       js.id = o; js.src = f; js.async = 1; fjs.parentNode.insertBefore(js, fjs);
-  }(window, document, 'script', '_hw', './widget.js'));
+  }(window, document, 'script', '_hw', 'https://djgn4fxgb4icu.cloudfront.net/index.js'));
   _hw(
     'init',
     // Options object, here you must setup the feed options
