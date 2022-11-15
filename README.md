@@ -39,7 +39,6 @@ Paste the following code snippet into the html index.
     // Options object, here you must setup the feed options
     { 
       accounts: ["vitalik.eth"],
-      networks: ["ethereum"]
     }
     );
 </script>
