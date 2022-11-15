@@ -5,9 +5,9 @@ export default function getTextByTag(tag: string, type: string): string {
         case 'transfer':
           return 'sent to';
         case 'mint':
-          return 'mint';
+          return 'mint a token';
         case 'burn':
-          return 'burn';
+          return 'burn a token';
         case 'bridge':
           return 'bridge';
         default:
