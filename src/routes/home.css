@@ -73,3 +73,19 @@
 .bold {
   font-weight: 600;
 }
+
+.spinner {
+  width: 64px;
+  height: 64px;
+  animation: spin-anim 3s linear infinite;
+}
+
+@keyframes spin-anim {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
