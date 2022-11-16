@@ -40,6 +40,7 @@ const Home = () => {
             cursor
           });
       setNotes((prev) => [...prev, ...result]);
+      console.log(result)
       if (total < config.limit) {
         setCursor(undefined);
       } else {
@@ -56,6 +57,7 @@ const Home = () => {
           cursor
         });
       setNotes((prev) => [...prev, ...result]);
+      console.log(result)
       if (total < config.limit) {
         setCursor(undefined);
       } else {
@@ -173,34 +175,40 @@ const ActionItem = ({ note, ensList }: { note: Note; ensList: any }) => {
     return (
       <div>
         <div className={style.action}>
-          <p className={style.bold}>{formatAccount(note.address_from, ensList)}</p>
+          {note.actions[0].type === 'create' ? 
+          <p className={style.bold}>{formatAccount(note.actions[0].address_to, ensList)}</p> :
+            <p className={style.bold}>{formatAccount(note.address_from, ensList)}</p>}
           <p className={style.fs90}>{getTextByTag(note.tag, note.type)}</p>
           <p className={style.bold}>{note.actions[0].platform}</p>
         </div>
 
-        <a href={
-          note.type === 'post' ? (
-            note.actions[0].related_urls.length > 1 ? note.actions[0].related_urls[1] : note.actions[0].related_urls[0]
-          ) : note.actions[0].metadata.target?.target_url
-        } target='_blank'>
-          <p className={style.fs90}>
-            {note.actions[0].metadata.title ?
-              note.actions[0].metadata.title :
-              note.actions[0].metadata.body
-            }
-          </p>
-          <div className={style.metadata}>
-            <div className={style.target}>
-
-              {
-                note.actions[0].metadata.target?.media &&
-                note.actions[0].metadata.target?.media[0].mime_type.startsWith('image') &&
-                <img src={note.actions[0].metadata.target?.media[0].address} />
+        {note.type !== 'profile' ? 
+          <a href={
+            note.type === 'post' ? (
+              note.actions[0].related_urls.length > 1 ? note.actions[0].related_urls[1] : note.actions[0].related_urls[0]
+            ) : note.actions[0].metadata.target?.target_url
+          } target='_blank'>       
+            <p className={style.fs90}>
+              {note.actions[0].metadata.title ?
+                note.actions[0].metadata.title :
+                note.actions[0].metadata.body
               }
-              <p className={style.fs75}>{note.actions[0].metadata.target?.body}</p>
+            </p>
+            <div className={style.metadata}>
+              <div className={style.target}>
+                {
+                  note.actions[0].metadata.target?.media &&
+                  note.actions[0].metadata.target?.media[0].mime_type.startsWith('image') &&
+                  <img src={note.actions[0].metadata.target?.media[0].address} />
+                }
+                <p className={style.fs75}>{note.actions[0].metadata.target?.body}</p>
+              </div>
             </div>
-          </div>
-        </a>
+          </a> :
+          <a href={note.actions[0].metadata.url} target="_blank">
+            <p>{note.actions[0].metadata.handle}</p>
+          </a>
+          }
       </div>
     );
   } else if (note.tag === 'donation') {

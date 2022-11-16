@@ -24,7 +24,7 @@ export default function getTextByTag(tag: string, type: string): string {
         case 'share':
           return 'shared a note';
         case 'profile':
-          return 'profile';
+          return 'created a profile on';
         default:
           break;
       }

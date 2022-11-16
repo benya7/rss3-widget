@@ -159,7 +159,19 @@ export interface Media {
   mime_type: string;
 }
 
-export interface Metadata extends Token, Swap, Comment, Donation, Post, Nft, Vote, Liquidity {}
+export interface Profile {
+  address?: string;
+  bio?: string;
+  handle?: string;
+  name?: string;
+  network?: string;
+  platform?: string;
+  profile_uri?: string[];
+  source?: string;
+  type?: string;
+  url?: string;
+}
+export interface Metadata extends Token, Swap, Comment, Donation, Post, Nft, Vote, Liquidity, Profile {}
 
 export interface Note {
   actions: Action[];
